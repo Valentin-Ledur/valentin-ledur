@@ -13,8 +13,9 @@
     <div class="grid-container">
         <!-- Menu -->
         <div id="menu-container" class="grid-menu text-center"></div>
+        <!-- Affichage du menu selectionné -->
         <div class="grid-body">
-            <h1 class="text-center">Accueil</h1>
+            <div id="canvas-container"></div>
         </div>
     </div>
     <!-- Recuperation du menu -->
@@ -25,6 +26,7 @@
                 document.getElementById('menu-container').innerHTML = data;
             });
     </script>
+    <script type="module" src="script.js"></script>
 </body>
 
 </html>

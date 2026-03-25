@@ -28,7 +28,7 @@ if (container) {
 
     const cube = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshStandardMaterial({ color: "hotpink" })
+        new THREE.MeshStandardMaterial({ color: "blue" })
     );
     scene.add(cube);
 
