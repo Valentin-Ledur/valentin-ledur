@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="grid-container">
+        <!-- Menu -->
+        <div id="menu-container" class="grid-menu text-center">
+
+        </div>
+        <!-- Affichage du menu selectionné -->
+        <div class="grid-body center">
+            <canvas id="canvas-container"></canvas>
+        </div>
+    </div>
+    <!-- Recuperation du menu -->
+    <script>
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('menu-container').innerHTML = data;
+            });
+    </script>
+    <script type="module" src="test.js"></script>
+</body>
+</html>
