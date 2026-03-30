@@ -62,8 +62,15 @@ a.menu-element {
     text-align: center;
 }
 
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Canvas */
 #canvas-container {
-    height: 100vh;
+    height: 50%;
+    width: 50%;
     background: #222;
 }

@@ -1,0 +1,39 @@
+Étape 1 : Initialisation de WebGPU (Renderer.js)
+
+    Récupérer l' adapter (la carte graphique) et le device (le lien logique).
+
+    Configurer le contexte du <canvas> (le format d'image, généralement bgra8unorm).
+
+Étape 2 : Le chargeur de modèle (ObjParser.js)
+
+    Faire un fetch() sur votre fichier .obj.
+
+    Lire le texte pour extraire les lignes v  (vertices), vn  (normales), vt  (UVs), et f  (faces/indices).
+
+    Aplatir tout ça dans un grand tableau 1D (Float32Array) compatible avec le GPU.
+
+Étape 3 : Chargement des Textures (TextureLoader.js)
+
+    Charger vos images (.png ou .jpg) via l'API createImageBitmap().
+
+    Créer une GPUTexture et copier l'image dedans.
+
+    Créer un GPUSampler (pour dire comment la texture est lue : lissage, répétition).
+
+Étape 4 : Le Pipeline d'affichage (Pipeline.js)
+
+    Compiler votre code WGSL avec device.createShaderModule().
+
+    Définir le RenderPipeline : dire à WebGPU comment vos buffers sont structurés (combien d'octets par vertex, où sont les normales, etc.) et activer le test de profondeur (Depth Buffer) pour la 3D.
+
+    Étape 5 : Les Bind Groups
+
+    C'est l'équivalent des Uniforms en OpenGL. Vous y passerez vos matrices de caméra (Projection, Vue, Modèle) et vos textures pour que le shader y ait accès.
+
+Étape 6 : La boucle de rendu (main.js)
+
+    Utiliser requestAnimationFrame.
+
+    Créer un CommandEncoder et un RenderPassEncoder.
+
+    Lier le pipeline, lier les Bind Groups, lier les Vertex/Index Buffers, et enfin appeler draw() ou drawIndexed()
