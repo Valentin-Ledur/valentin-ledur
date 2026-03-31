@@ -3,8 +3,8 @@
 
 @fragment
 fn main(
-  @location(2) fragUV: vec2f,
-  @location(0) fragPosition: vec4f
+    @location(0) fragPosition: vec4f,
+    @location(1) fragUV: vec2f,
 ) -> @location(0) vec4f {
-  return textureSample(myTexture, mySampler, fragUV);
+    return textureSample(myTexture, mySampler, fragUV);
 }
