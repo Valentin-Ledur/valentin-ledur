@@ -22,6 +22,8 @@ scene.add(gridHelper);
 const axesHelper = new THREE.AxesHelper(5);
 scene.add(axesHelper);
 
+camera.position.set(0, 5, 15);
+
 const controls = new OrbitControls(camera, canvas);
 controls.target.set(0, 5, 0);
 controls.update();
@@ -29,8 +31,6 @@ controls.update();
 const loader = new GLTFLoader();
 const gltf = await loader.loadAsync('models/Untitled.glb');
 scene.add(gltf.scene);
-
-camera.position.set(0, 5, 15);
 
 function animate() {
     renderer.render(scene, camera);
