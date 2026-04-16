@@ -2,6 +2,8 @@ import {
     mat4,
 } from 'https://wgpu-matrix.org/dist/3.x/wgpu-matrix.module.js';
 
+import { Camera } from './camera.js'
+
 import { parseObjFile } from "./utils/objParser.js";
 // Code de base
 if (!navigator.gpu) throw new Error("WebGPU non supporté!");
@@ -27,7 +29,7 @@ const cubeVertexShadersCode = await cubeVertexShaders.text();
 const cubeFragmentShaders = await fetch("shaders/cube/frag.wgsl");
 const cubeFragmentShadersCode = await cubeFragmentShaders.text();
 
-const objText = await(await fetch("models/mangas.obj")).text();
+const objText = await (await fetch("models/mangas.obj")).text();
 const textureFile = await fetch("texture/mangas.webp");
 
 const obj = parseObjFile(objText);
@@ -183,20 +185,37 @@ const renderPassDescriptor = {
 
 const aspect = canvas.width / canvas.height;
 const projectionMatrix = mat4.perspective((2 * Math.PI) / 5, aspect, 1, 100.0);
+
+const modelMatrix = mat4.create();
 const modelViewProjectionMatrix = mat4.create()
 
-function getTransformationMatrix() {
-    const viewMatrix = mat4.identity();
-    mat4.translate(viewMatrix, [0, -5, -9], viewMatrix);
-    const now = Date.now() / 1000;
-    mat4.rotate(viewMatrix, [0, 1, 0], now, viewMatrix);
 
-    mat4.multiply(projectionMatrix, viewMatrix, modelViewProjectionMatrix);
+let camera = new Camera([0, 0, 0], [0, 0, 1]);
+camera.initMovement();
+
+function getTransformationMatrix() {
+    const now = Date.now() / 1000;
+    
+    mat4.identity(modelMatrix);
+    mat4.rotate(modelMatrix, [0, 1, 0], now, modelMatrix);
+
+    const viewMatrix = camera.getViewMatrix();
+
+    mat4.multiply(projectionMatrix, viewMatrix, modelViewProjectionMatrix)
+    mat4.multiply(modelViewProjectionMatrix, modelMatrix, modelViewProjectionMatrix)
 
     return modelViewProjectionMatrix;
 }
 
-function frame() {
+let lastTime = 0;
+
+function frame(time) {
+    time *= 0.001; 
+    const deltaTime = time - lastTime;
+    lastTime = time;
+
+    camera.move(deltaTime);
+
     const transformationMatrix = getTransformationMatrix();
     device.queue.writeBuffer(
         uniformBuffer,
