@@ -190,7 +190,7 @@ const modelMatrix = mat4.create();
 const modelViewProjectionMatrix = mat4.create()
 
 
-let camera = new Camera([0, 0, 0], [0, 0, 1]);
+let camera = new Camera(canvas.width, canvas.height);
 camera.initMovement();
 
 function getTransformationMatrix() {
