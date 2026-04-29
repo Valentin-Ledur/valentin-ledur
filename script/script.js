@@ -15,7 +15,7 @@ renderer.setSize(canvas.clientWidth, canvas.clientHeight);
 renderer.setAnimationLoop(animate);
 canvas.appendChild(renderer.domElement);
 
-const light = new THREE.AmbientLight(0xFFFFFF);
+const light = new THREE.AmbientLight(0xFFFFFF, 1);
 scene.add(light);
 const size = 100;
 const divisions = 50;
@@ -32,7 +32,7 @@ controls.target.set(0, 5, 0);
 controls.update();
 
 const loader = new GLTFLoader();
-const gltf = await loader.loadAsync('models/Untitled.glb');
+const gltf = await loader.loadAsync('models/mangas_light.glb');
 scene.add(gltf.scene);
 
 function animate() {
