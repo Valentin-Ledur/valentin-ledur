@@ -35,6 +35,12 @@ const loader = new GLTFLoader();
 const gltf = await loader.loadAsync('models/mangas_light.glb');
 scene.add(gltf.scene);
 
+window.addEventListener('resize', () => {
+    camera.aspect = canvas.clientWidth / canvas.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+});
+
 function animate() {
     renderer.render(scene, camera);
 }

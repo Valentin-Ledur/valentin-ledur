@@ -72,8 +72,9 @@ html {
         height: 100px;
     }
 
-    #canvas-container {
-        height: 80%;
-        width: 90%;
+#canvas-container {
+        height: 50vh;
+        width: 95%;
+        max-width: none;
     }
 }
