@@ -56,38 +56,36 @@ a.menu-element {
 
 /* Loader */
 
+/*--------------------------------------------------------------*/
+
 /* Le conteneur principal des inputs */
 .file-inputs-container {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Espace entre chaque bloc */
+    gap: 20px;
     padding: 20px;
     margin-top: 20px;
-    border-top: 1px solid #2a364d; /* Petite ligne de séparation avec le menu */
+    border-top: 1px solid #2a364d;
 }
 
-/* Espacement entre le label et l'input */
 .input-group {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-/* Style du texte au dessus de l'input */
 .input-group label {
     font-size: 0.9rem;
     font-weight: bold;
     color: #f1f5f9;
 }
 
-/* Style global du champ fichier (pour masquer l'aspect par défaut) */
 input[type="file"] {
     font-size: 0.85rem;
     color: #a0aec0;
     cursor: pointer;
 }
 
-/* LE SECRET : Styliser le bouton "Choisir un fichier" du navigateur ! */
 input[type="file"]::file-selector-button {
     padding: 8px 12px;
     margin-right: 15px;
@@ -100,13 +98,11 @@ input[type="file"]::file-selector-button {
     transition: all 0.3s ease;
 }
 
-/* Animation au survol du bouton "Choisir un fichier" */
 input[type="file"]::file-selector-button:hover {
     background-color: #38bdf8;
     color: #0b1120;
 }
 
-/* Amélioration du bouton principal de chargement */
 .menu-load-button {
     margin-top: 10px;
     padding: 12px 20px;
@@ -118,6 +114,8 @@ input[type="file"]::file-selector-button:hover {
     font-weight: bold;
     font-size: 1rem;
 }
+
+/*--------------------------------------------------------------*/
 
 .menu-load-button:hover {
     background-color: #0ea5e9;
