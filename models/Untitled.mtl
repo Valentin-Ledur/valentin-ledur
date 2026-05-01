@@ -1,0 +1,13 @@
+# Blender 5.1.1 MTL File: 'None'
+# www.blender.org
+
+newmtl mesh_Model_4_u1_v1.001
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 1
+map_Kd C:/Users/valen/Documents/Licence/M1/ISIR/SIRI/valentin-ledur/texture/mangas.webp
+map_refl C:/Users/valen/Documents/Licence/M1/ISIR/SIRI/valentin-ledur/texture/mangas.webp

@@ -32,7 +32,7 @@ controls.target.set(0, 5, 0);
 controls.update();
 
 const loader = new GLTFLoader();
-const gltf = await loader.loadAsync('models/mangas_light.glb');
+const gltf = await loader.loadAsync('models/Untitled.glb');
 scene.add(gltf.scene);
 
 window.addEventListener('resize', () => {
