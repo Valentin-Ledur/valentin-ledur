@@ -1,0 +1,49 @@
+/* Grille CV */
+
+.cv-grid-container {
+    display: grid;
+    grid-template-columns: 300px 600px;
+    min-height: 100vh;
+    background-color: gray;
+}
+
+
+/* Partie gauche */
+.cv-left {
+    height: 100vh;
+    padding: 40px;
+    background-color: lightblue;
+}
+
+.cv-img {
+    background-color: black;
+}
+
+.cv-left-block {
+    background-color: green;
+}
+
+/* Partie Droite */
+.cv-right {
+    height: 100vh;
+    padding: 40px;
+    background-color: lightgreen;
+}
+
+.cv-name {
+    background-color: greenyellow;
+}
+
+.cv-title {
+    background-color: goldenrod;
+}
+
+.cv-motivation {
+    background-color: blueviolet;
+}
+
+.cv-right-block {
+    padding: 10px;
+    margin: 10px;
+    background-color: blue;
+}
