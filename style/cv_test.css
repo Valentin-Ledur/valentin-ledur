@@ -1,3 +1,5 @@
+/* CSS généré à l'aide de GEMINI 3.1 PRO */
+
 /* --- Conteneur principal du CV --- */
 .cv-grid-container {
     display: grid;
@@ -156,5 +158,165 @@
     color: #a0aec0;
     font-size: 0.95rem;
     line-height: 1.5;
+    margin: 0;
+}
+
+/* --- La Timeline --- */
+
+/* 1. La grande ligne verticale */
+.timeline {
+    border-left: 2px solid #38bdf8; /* C'est ça qui crée la ligne principale ! */
+    padding-left: 25px; /* Espace entre la ligne et le texte */
+    margin-left: 10px; /* On décale un peu la ligne vers la droite */
+    margin-top: 20px;
+}
+
+/* 2. Chaque bloc d'expérience */
+.timeline-item {
+    position: relative; /* CRUCIAL : Permet de positionner le point par rapport à ce bloc */
+    margin-bottom: 30px;
+}
+
+/* 3. Le petit point sur la ligne (Le pseudo-élément) */
+.timeline-item::before {
+    content: ''; /* Obligatoire pour que ça s'affiche */
+    position: absolute;
+    left: -32px; /* On recule le point pour qu'il tombe pile sur la ligne */
+    top: 0px; /* Aligné avec le haut du bloc */
+    width: 12px; /* Largeur du point */
+    height: 12px; /* Hauteur du point */
+    background-color: #151e32; /* Couleur de l'intérieur du point (couleur de fond) */
+    border: 3px solid #38bdf8; /* Bordure du point */
+    border-radius: 50%; /* Rend le point parfaitement rond */
+}
+
+/* --- Style du texte à l'intérieur --- */
+.timeline-date {
+    display: inline-block;
+    color: #38bdf8;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.timeline-item h3 {
+    color: #f1f5f9;
+    font-size: 1.2rem;
+    margin: 0 0 10px 0;
+}
+
+.timeline-item p {
+    color: #a0aec0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* --- Mise en forme des textes à gauche --- */
+.cv-left-block p {
+    margin: 5px 0; /* Rapproche les lignes de texte */
+    color: #cbd5e1; /* Un gris très clair pour la lisibilité */
+    font-size: 0.95rem;
+}
+
+.cv-left-block h3 {
+    color: #f1f5f9;
+    font-size: 1.05rem;
+    margin: 15px 0 5px 0;
+}
+
+/* --- Stylisation des liens (Réseaux) --- */
+.cv-left-block a {
+    color: #38bdf8;
+    text-decoration: none; /* Enlève le soulignement moche par défaut */
+    font-weight: bold;
+    display: inline-block;
+    margin: 5px 0;
+    transition: all 0.3s ease; /* Animation fluide */
+}
+
+.cv-left-block a:hover {
+    color: #0ea5e9; /* Devient un peu plus sombre/intense au survol */
+    transform: translateX(5px); /* Décale légèrement le texte vers la droite au survol ! */
+}
+
+@media print {
+    /* 1. Retire les marges forcées par le navigateur et définit la taille de la page */
+    @page {
+        margin: 0.5cm; /* Marge très fine sur le papier */
+        size: A4;
+    }
+
+    /* 2. On enlève le style "carte web" du conteneur */
+    .cv-grid-container {
+        margin: 0;
+        max-width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    /* 3. On réduit drastiquement les espacements internes (paddings) */
+    .cv-left {
+        padding: 20px 15px;
+    }
+    
+    .cv-right {
+        padding: 20px;
+    }
+
+    .cv-right-block {
+        margin-bottom: 15px; /* Moins d'espace entre les sections */
+    }
+
+    .timeline-item {
+        margin-bottom: 15px; /* Moins d'espace entre les expériences */
+    }
+
+    /* 4. On réduit la taille des polices d'écriture */
+    html {
+        font-size: 12px; /* Réduit la base de tous les textes (par défaut 16px) */
+    }
+
+    .cv-name {
+        font-size: 2rem;
+    }
+
+    .cv-title {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .cv-img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 15px;
+    }
+
+    /* Optionnel : Forcer les couleurs sombres à l'impression si tu veux exporter en PDF. 
+       Attention, si c'est pour imprimer sur une vraie imprimante, ça va vider tes cartouches noires ! */
+    body {
+        -webkit-print-color-adjust: exact; 
+        print-color-adjust: exact;
+    }
+}
+
+/* --- Alignement des icônes et du texte --- */
+.info-item {
+    display: flex;       /* Permet d'aligner les éléments côte à côte */
+    align-items: center; /* Centre verticalement l'icône et le texte */
+    gap: 10px;           /* Espace entre l'icône et le texte */
+    margin-bottom: 12px; /* Espace entre chaque ligne d'information */
+}
+
+/* --- Taille et couleur des SVG --- */
+.icon-svg {
+    width: 20px;         /* Ajuste cette valeur pour modifier la taille (ex: 24px) */
+    height: 20px;
+    color: #38bdf8;      /* Applique ta couleur bleue aux icônes */
+    flex-shrink: 0;      /* Empêche l'icône de s'écraser si le texte est long */
+}
+
+/* Optionnel : on enlève la marge par défaut des <p> à l'intérieur pour un meilleur rendu */
+.info-item p {
     margin: 0;
 }
