@@ -12,47 +12,21 @@
 </head>
 
 <body>
-    <div class="grid-container">
-        <!-- Menu -->
-        <div id="menu-container" class="grid-menu menu-background">
-            <div id="pages"></div>
-        </div>
-        <!-- Affichage du menu selectionné -->
-        <div class="grid-body text-center">
-            <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
-        </div>
+    <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
 
-        <!-- Recuperation du menu -->
-        <script>
-            fetch('menu.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById("pages").innerHTML = data;
+    <script type='text/javascript'>
+        var Module = {
+            canvas: (function () {
+                var canvas = document.getElementById('canvas');
+                canvas.addEventListener("webglcontextlost", function (e) { alert('Le contexte WebGL a été perdu. Veuillez recharger la page.'); e.preventDefault(); }, false);
+                return canvas;
+            })(),
+            onRuntimeInitialized: function () {
+                console.log("Chargement reussi");
+            }
+        };
+    </script>
 
-                    const btn = document.getElementById('menu-toggle');
-                    const list = document.getElementById('menu-links');
-
-                    if (btn && list) {
-                        btn.addEventListener('click', () => {
-                            list.classList.toggle('active');
-                        });
-                    }
-                });
-        </script>
-
-        <script type='text/javascript'>
-            var Module = {
-                canvas: (function () {
-                    var canvas = document.getElementById('canvas');
-                    canvas.addEventListener("webglcontextlost", function (e) { alert('Le contexte WebGL a été perdu. Veuillez recharger la page.'); e.preventDefault(); }, false);
-                    return canvas;
-                })(),
-                onRuntimeInitialized: function () {
-                    console.log("Chargement reussi");
-                }
-            };
-        </script>
-    </div>
     <script async type="text/javascript" src="SpaceShooter.js"></script>
 </body>
 
