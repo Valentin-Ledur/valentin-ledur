@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr" class="background text-white">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/menu.css">
+    <link rel="stylesheet" href="style/color.css">
+</head>
+
+<body>
+    <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+
+    <script type='text/javascript'>
+        var Module = {
+            canvas: (function () {
+                var canvas = document.getElementById('canvas');
+                canvas.addEventListener("webglcontextlost", function (e) { alert('Le contexte WebGL a été perdu. Veuillez recharger la page.'); e.preventDefault(); }, false);
+                return canvas;
+            })(),
+            onRuntimeInitialized: function () {
+                console.log("Chargement reussi");
+            }
+        };
+    </script>
+
+    <script async type="text/javascript" src="SpaceShooter.js"></script>
+</body>
+
+</html>
