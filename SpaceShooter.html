@@ -18,29 +18,179 @@
             <div id="pages"></div>
         </div>
         <!-- Affichage du menu selectionné -->
-        <div class="grid-body text-center">
-            <h1> Accueil </h1>
-            <a href="spaceshooter/launch.html"> test </a>
+        <div class="grid-body center">
+            <div class="text-block">
+                <h1 class="text-center">SpaceShooter 2D</h1>
+                <img class="img" src="img/spaceshooter.webp">
+                <div class="text-left">
+                    <h2>Contexte :</h2>
+                    <p>J&#39;ai réalisé ce jeu 2D de type <strong><em>SpaceShooter</em></strong> au cours de mes études.
+                        Cela
+                        m&#39;a permis d&#39;apprendre les langages C et C++, ainsi qu&#39;à utiliser vcpkg dans Visual
+                        Studio
+                        Code avec l&#39;extension cmake.</p>
+                    <h2>Commandes :</h2>
+                    <p>Les boutons de la souris permettent au joueur de tirer et les touches <strong>Z, Q, S, D</strong>
+                        permettent de se déplacer.<br></p>
+                    <p>Pour mettre le jeu en pause, il faut appuyer sur <strong>ECHAP</strong> pour la version Windows
+                        et
+                        <strong>E</strong> pour la version web.
+                    </p>
+                    <h2>Joueur :</h2>
+                    <p>Le joueur est un petit vaisseau spatial qui apparaît au centre de l&#39;écran au début de la
+                        partie.
+                        Il a
+                        3 vies affichées en haut à gauche et un score affiché en haut à droite.</p>
+                    <h2>Types d&#39;Ennemis :</h2>
+                    <p>Il existe 3 types d&#39;astéroïdes qui rapportent tous 20 points lors de leur destruction:</p>
+                    <ul>
+                        <li>
+                            <p><strong>Rocheux</strong>, ce sont les astéroïdes de base;</p>
+                        </li>
+                        <li>
+                            <p><strong>Métalliques</strong>, plus clairs que les astéroïdes rocheux, ils ont une chance
+                                d&#39;apparaître avec un morceau de métal qui leur confère une protection contre le
+                                premier
+                                projectile rencontré;</p>
+                        </li>
+                        <li>
+                            <p><strong>Glaciaux</strong>, ralentissent le joueur pendant 5 secondes s&#39;ils le
+                                touches;
+                            </p>
+                        </li>
+                    </ul>
+                    <h2>Bibliothèques utilisées :</h2>
+                    <ul>
+                        <li>
+                            <p>SDL2</p>
+                        </li>
+                        <li>
+                            <p>SDL2_ttf</p>
+                        </li>
+                        <li>
+                            <p>SDL2_image</p>
+                        </li>
+                    </ul>
+                    <h2>Structure du code :</h2>
+                    <p>Ce projet ayant été réalisé sur plusieurs années et ayant été réécrit dans différents langages,
+                        j&#39;ai
+                        restructuré voire recommencé plusieurs parties du code plusieurs fois.</p>
+                    <h3>1. Version C</h3>
+                    <p>Pour la version C, il n&#39;existait que quelques fichiers qui étaient compilés à l&#39;aide de
+                        la
+                        commande gcc directement dans un terminal:</p>
+                    <ul>
+                        <li>
+                            <p>main.c qui servait à appeler la classe game;</p>
+                        </li>
+                        <li>
+                            <p>Game.c qui regroupait toutes les actions et les entités (joueur, projectiles, astéroïdes
+                                ...),
+                                ainsi que les fonctions utilitaires comme ajouter un texte à un rendu, la fonction
+                                Random
+                                permettant de générer un nombre aléatoire... ;</p>
+                        </li>
+                        <li>
+                            <p>joueur.c qui représentait le joueur;</p>
+                        </li>
+                        <li>
+                            <p>asteroid.c qui représentait les différents types d&#39;astéroïdes;</p>
+                        </li>
+                    </ul>
+                    <h3>2. Version C++ (finale)</h3>
+                    <p>Passer au C++ m&#39;a permis de revoir la structure globale de mon projet ainsi que
+                        d&#39;utiliser
+                        cmake
+                        et vcpkg pour gérer les bibliothèques que j&#39;ai utilisées et pour compiler le code. Ainsi que
+                        de
+                        passer au compilateur <strong>MSVC</strong> pour la version Windows et
+                        <strong>Emscripte</strong>
+                        pour
+                        ajouter un support web (<a href="spaceshooter/launch.html" target="_blank">disponible
+                            ici</a>).<br>
+                    </p>
+                    <p>Pour cette version, je suis passé d&#39;une structure monolithique où la classe
+                        <strong><em>Game</em></strong> gérait tout à un système de <strong><em>managers</em></strong>
+                        pour
+                        séparer les différentes responsabilités:
+                    </p>
+                    <ul>
+                        <li>
+                            <p>PlayerManager qui s&#39;occupe des <strong>actions relatives au joueur</strong>;</p>
+                        </li>
+                        <li>
+                            <p>EnemyManager qui s&#39;occupe de la <strong>génération des astéroïdes</strong>;</p>
+                        </li>
+                        <li>
+                            <p>UIManager qui s&#39;occupe de la <strong>création des éléments des menus (start, play,
+                                    game_over
+                                    et pause)</strong>;</p>
+                        </li>
+                        <li>
+                            <p>ProjectileManager qui s&#39;occupe de <strong>la création et des déplacements des
+                                    projectiles
+                                    du
+                                    joueur</strong>;</p>
+                        </li>
+                        <li>
+                            <p>La classe Game, qui s&#39;occupe <strong>d&#39;appeler tous les managers et de gérer les
+                                    collisions entre les entités</strong>;</p>
+                        </li>
+                        <li>
+                            <p>Le namespace <strong><em>Utils</em></strong> regroupe les fonctions utilitaires qui
+                                servent
+                                entre
+                                autres à <strong>créer une texture ou générer un nombre aléatoire</strong>;</p>
+                        </li>
+                    </ul>
+                    <h2>Compilation</h2>
+                    <p>Commencez par cloner le projet :</p>
+                    <p class="text-code"><code>git clone https://github.com/Valentin-Ledur/SpaceShooter.git</code></p>
+                    <p class="text-code"><code>cd SpaceShooter</code></p>
+                    <p>Ensuite, assurez-vous d'avoir installé <strong>vcpkg</strong> ainsi que d'avoir créé la variable d'environnement
+                        <strong>VCPKG_ROOT</strong>, mais aussi <strong>Emscripten</strong> et la variable <strong>EMSDK</strong> si vous
+                        souhaitez compiler pour le Web.
+                    </p>
+
+                    <h3>Visual Studio Code</h3>
+                    <p>Pour compiler à l'aide de l'interface de Visual Studio Code, vous aurez besoin de l'extension
+                        CMake, ainsi que d'exécuter Visual Studio Code dans un terminal ayant accès au compilateur
+                        correspondant à la
+                        plateforme que vous visez (MSVC pour Windows et Emscripten pour le Web). Ensuite, si vous avez
+                        configuré correctement
+                        votre environnement, vous n'aurez plus qu'à utiliser l'interface de Visual Studio Code pour
+                        compiler/exécuter le programme.</p>
+
+                    <h3>CMake Windows</h3>
+                    <p>Pour compiler en ligne de commande pour Windows :</p>
+                    <p class="text-code"><code>cmake -B build -S . --preset windows</code></p>
+                    <p class="text-code"><code>cmake --build build</code></p>
+
+                    <h3>CMake Emscripten</h3>
+                    <p>Pour compiler en ligne de commande pour le Web :</p>
+                    <p class="text-code"><code>cmake -B build -S . --preset web</code></p>
+                    <p class="text-code"><code>cmake --build build</code></p>
+                </div>
+            </div>
+
+            <!-- Recuperation du menu -->
+            <script>
+                fetch('menu.html')
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById("pages").innerHTML = data;
+
+                        const btn = document.getElementById('menu-toggle');
+                        const list = document.getElementById('menu-links');
+
+                        if (btn && list) {
+                            btn.addEventListener('click', () => {
+                                list.classList.toggle('active');
+                            });
+                        }
+                    });
+            </script>
         </div>
-
-        <!-- Recuperation du menu -->
-        <script>
-            fetch('menu.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById("pages").innerHTML = data;
-
-                    const btn = document.getElementById('menu-toggle');
-                    const list = document.getElementById('menu-links');
-
-                    if (btn && list) {
-                        btn.addEventListener('click', () => {
-                            list.classList.toggle('active');
-                        });
-                    }
-                });
-        </script>
-    </div>
 </body>
 
 </html>
