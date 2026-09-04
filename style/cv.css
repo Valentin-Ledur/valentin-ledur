@@ -1,49 +1,318 @@
-/* Grille CV */
+/* Code écrit à l'aide de GEMINI 3.1 PRO */
 
 .cv-grid-container {
     display: grid;
-    grid-template-columns: 300px 600px;
-    min-height: 100vh;
-    background-color: gray;
+    grid-template-columns: 1fr 2fr;
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: #151e32;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
 }
 
-
-/* Partie gauche */
 .cv-left {
-    height: 100vh;
-    padding: 40px;
-    background-color: lightblue;
+    padding: 40px 30px;
+    background-color: #0b1120;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cv-img {
-    background-color: black;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #38bdf8;
+    margin-bottom: 30px;
+    background-color: #2a364d;
 }
 
 .cv-left-block {
-    background-color: green;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.cv-left-block h2 {
+    font-size: 1.2rem;
+    color: #38bdf8;
+    border-bottom: 1px solid #2a364d;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
 }
 
 /* Partie Droite */
 .cv-right {
-    height: 100vh;
     padding: 40px;
-    background-color: lightgreen;
+    background-color: #151e32;
+}
+
+.cv-right-block.text-center {
+    margin-bottom: 40px;
+    text-align: left;
 }
 
 .cv-name {
-    background-color: greenyellow;
+    font-size: 2.5rem;
+    color: #f1f5f9;
+    margin: 0 0 5px 0;
+    text-transform: uppercase;
 }
 
 .cv-title {
-    background-color: goldenrod;
+    font-size: 1.4rem;
+    color: #38bdf8;
+    margin: 0 0 20px 0;
+    font-weight: 500;
 }
 
 .cv-motivation {
-    background-color: blueviolet;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #a0aec0;
+    font-style: italic;
+    background-color: rgba(42, 54, 77, 0.4);
+    padding: 15px;
+    border-left: 4px solid #38bdf8;
+    border-radius: 0 8px 8px 0;
 }
 
+/* Sections principales */
 .cv-right-block {
-    padding: 10px;
-    margin: 10px;
-    background-color: blue;
+    margin-bottom: 35px;
+}
+
+.cv-right-block h2 {
+    font-size: 1.4rem;
+    color: #f1f5f9;
+    border-bottom: 2px solid #38bdf8;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+@media screen and (max-width: 850px) {
+    .cv-grid-container {
+        grid-template-columns: 1fr;
+        margin: 20px;
+    }
+
+    .cv-left {
+        padding: 30px 20px;
+    }
+}
+
+.timeline {
+    border-left: 2px solid #38bdf8;
+    padding-left: 25px;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -32px;
+    top: 0px;
+    width: 12px;
+    height: 12px;
+    background-color: #151e32;
+    border: 3px solid #38bdf8;
+    border-radius: 50%;
+}
+
+.timeline-date {
+    display: inline-block;
+    color: #38bdf8;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.timeline-item h3 {
+    color: #f1f5f9;
+    font-size: 1.2rem;
+    margin: 0 0 10px 0;
+}
+
+.timeline-item p {
+    color: #a0aec0;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.cv-left-block p {
+    margin: 5px 0;
+    color: #cbd5e1;
+    font-size: 1.2rem;
+}
+
+.cv-left-block h3 {
+    color: #f1f5f9;
+    font-size: 1.05rem;
+    margin: 15px 0 5px 0;
+}
+
+.cv-left-block a {
+    color: #38bdf8;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+.cv-left-block a:hover {
+    color: #0ea5e9;
+}
+
+.link-no-display {
+    color: #38bdf8;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+@media print {
+
+    @page {
+        margin: 0cm;
+        size: A4;
+    }
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    html,
+    .cv-grid-container,
+    .cv-right {
+        background-color: white !important;
+        box-shadow: none !important;
+        border-radius: 0;
+    }
+
+    .cv-left {
+        background: #f1f5f9 !important;
+        box-shadow: none !important;
+        border-radius: 0;
+    }
+
+    .cv-grid-container {
+        margin: 0 !important;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    a,
+    span,
+    .cv-name,
+    .cv-title,
+    .icon-svg,
+    .link-no-display {
+        color: black !important;
+    }
+
+    .cv-left-block h2 {
+        border-bottom: 1px solid #ccc !important;
+    }
+
+    .cv-right-block h2 {
+        border-bottom: 2px solid black !important;
+    }
+
+    .timeline {
+        border-left: 2px solid black !important;
+    }
+
+    .timeline-item::before {
+        background-color: white !important;
+        border: 3px solid black !important;
+    }
+
+    .cv-motivation {
+        background-color: transparent !important;
+        border-left: 4px solid black !important;
+        color: black !important;
+    }
+
+    .cv-img {
+        border: 3px solid black !important;
+        width: 90px !important;
+        height: 90px !important;
+        margin-bottom: 0px !important;
+        background-color: transparent !important;
+    }
+
+    .cv-right {
+        padding: 20px !important;
+    }
+
+    .cv-right-block {
+        margin-bottom: 10px !important;
+    }
+
+    .cv-left-block {
+        margin-bottom: 0px !important;
+    }
+
+    .timeline-item {
+        margin-bottom: 10px !important;
+    }
+
+    .cv-right-block h2 {
+        margin-bottom: 10px !important;
+        padding-bottom: 2px !important;
+    }
+
+    html {
+        font-size: 11px !important;
+    }
+
+    p,
+    .cv-motivation,
+    .timeline-item p,
+    ul {
+        line-height: 1.3 !important;
+        margin-bottom: 5px !important;
+    }
+
+    .cv-right-block,
+    .timeline-item,
+    .cv-left-block {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.icon-svg {
+    width: 20px;
+    height: 20px;
+    color: #38bdf8;
+    flex-shrink: 0;
 }
