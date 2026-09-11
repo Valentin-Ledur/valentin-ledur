@@ -47,6 +47,7 @@ html {
 
 .text-left h2 {
     color: #38bdf8;
+    border-bottom: 1px solid #2a364d;
 }
 
 .text-left h3 {

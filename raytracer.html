@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr" class="background text-white">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/menu.css">
+    <link rel="stylesheet" href="style/color.css">
+</head>
+
+<body>
+    <div class="grid-container">
+        <!-- Menu -->
+        <div id="menu-container" class="grid-menu menu-background">
+            <div id="pages"></div>
+        </div>
+        <!-- Affichage du menu selectionné -->
+        <div class="grid-body center">
+            <div class="text-block text-center">
+                <h1>Raytracer CPU</h1>
+                <div class="text-left">
+                    <h2>Introduction :</h2>
+
+                    <h3>Contexte</h3>
+                    <p>Projet réalisé avec le code de départ de Maxime MARIA lors du cours Introduction à la Synthèse
+                        d'Image Réaliste.</p>
+
+                    <h3>Objectifs</h3>
+                    <p>Ce projet avait pour but de nous faire découvrir le rendu par lancer de rayons ainsi que les
+                        comportements de ces rayons en fonction du type de matériaux et géométries.</p>
+
+                    <h3>Bibliothèques utilisées</h3>
+                    <ul>
+                        <li>GLM: calculs vectoriels et matriciels;</li>
+                        <li>OpenMP: parallélisation de la boucle de rendu principal (parcours des pixels);</li>
+                        <li>Assimp: importation des fichiers 3D;</li>
+                        <li>stb_image: chargement des textures et export de l'image finale;</li>
+                    </ul>
+
+                    <h2>Rendu et intégrateurs :</h2>
+
+                    <h3>Génération des rayons</h3>
+                    <p>Au moins un rayon par pixel est envoyé de la caméra vers le pixel correspondant.</p>
+
+                    <h3>Anti-aliasing</h3>
+                    <p>Plusieurs rayons sont lancés par pixel pour "lisser" le rendu.</p>
+
+                    <h3>Ray Cast</h3>
+                    <p>Rendu de base calculant l'intersection primaire caméra-objet et un ombrage basique basé sur
+                        l'angle d'incidence.</p>
+
+                    <h3>Direct Lighting</h3>
+                    <p>Calcul de l'illumination directe par tir d'un rayon d'ombrage vers chaque source lumineuse pour
+                        vérifier l'absence d'obstacle entre le point d'impact et la lumière.</p>
+
+                    <h3>Whitted</h3>
+                    <p>Gestion des rebonds de la lumière pour les matériaux miroir et transparents.</p>
+
+                    <h2>Objets :</h2>
+
+                    <h3>Basiques</h3>
+                    <p>Sphère, plan, triangle.</p>
+
+                    <h3>Objets implicites</h3>
+                    <p>Sphère, <i>torus</i>, demi-sphère.</p>
+
+                    <h2>Structures accélératrices :</h2>
+
+                    <h3>AABB (Axis-Aligned Bounding Box)</h3>
+                    <p>Boîtes englobantes permettant de réduire le nombre de tests d'intersection.</p>
+
+                    <h3>BVH (Bounding Volume Hierarchy)</h3>
+                    <p>Un BVH est représenté par un arbre binaire, qui pour chaque feuille contient un certain nombre de
+                        triangle à tester. Les triangles sont séparé en fonction de leur centroïd.</p>
+
+                    <h2>Matériaux et BRDF (Bidirectional Reflectance Distribution Function) : </h2>
+
+                    <h3>Diffus</h3>
+                    <p>Utilisation de la BRDF de Lambert.</p>
+
+                    <h3>Plastique</h3>
+                    <p>Combinaison des BRDF de Lambert et Blinn-Phong.</p>
+
+                    <h3>PBR métallique</h3>
+                    <p>Modèle microfacettes de Cook-Torrance utilisant les paramètres de <i>rugosité</i> et de
+                        <i>metalness</i>.</p>
+
+                    <h2>Sources lumineuses :</h2>
+
+                    <h3>Point light</h3>
+                    <p>Lumière ponctuelle basique.</p>
+
+                    <h3>Lumière surfacique (Quad light)</h3>
+                    <p>Source rectangulaire échantillonnée aléatoirement depuis les surfaces visibles, permettant de
+                        générer des ombres douces.</p>
+
+                </div>
+            </div>
+            <canvas id="canvas-container"></canvas>
+        </div>
+    </div>
+    <!-- Recuperation du menu -->
+    <script>
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("pages").innerHTML = data;
+
+                const btn = document.getElementById('menu-toggle');
+                const list = document.getElementById('menu-links');
+
+                if (btn && list) {
+                    btn.addEventListener('click', () => {
+                        list.classList.toggle('active');
+                    });
+                }
+            });
+    </script>
+</body>
+
+</html>

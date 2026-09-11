@@ -4,6 +4,16 @@
     color: #38bdf8;
 }
 
+.menu-titre a {
+    text-decoration: none;
+    color: #38bdf8;
+}
+
+.menu-titre a:hover {
+    text-decoration: none;
+    color: #295abb;
+}
+
 .menu-element {
     padding: 15px;
     margin: 5px 15px;
@@ -24,7 +34,7 @@ a.menu-element {
     align-items: center;
     justify-content: center;
     height: 100px;
-    padding: 0 20px;
+    padding: 0 10px;
 }
 
 .menu-button {
