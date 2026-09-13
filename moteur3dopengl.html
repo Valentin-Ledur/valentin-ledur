@@ -31,14 +31,13 @@
                     <p>Ce projet avait pour but de nous faire découvrir OpenGL et plus globalement le rendu en temps
                         réel et l'utilisation des shaders. En utilisant pour scène principale <i>Sponza</i>.</p>
 
-                    <h3>Bibliothéques utilisées</h3>
+                    <h3>Bibliothèques utilisées</h3>
                     <ul>
                         <li>OpenGL: API de rendu;</li>
-                        <li>GLSL (OpenGL Shading language): langage utilisé par les shaders pour OpenGL;</li>
-                        <li>SDL2 (Simple DirectMedia Layer): gestion de la fênetre, du contexte OpenGL ainsi que des
+                        <li>GLSL (OpenGL Shading Language): langage utilisé par les shaders pour OpenGL;</li>
+                        <li>SDL2 (Simple DirectMedia Layer): gestion de la fenêtre, du contexte OpenGL ainsi que des
                             entrées (clavier/souris);</li>
                         <li>GLM: calculs vectoriels et matriciels;</li>
-                        <li>OpenMP: parallélisation de la boucle de rendu principal (parcours des pixels);</li>
                         <li>Assimp: importation des fichiers 3D;</li>
                         <li>stb_image: chargement des textures;</li>
                     </ul>
@@ -46,12 +45,16 @@
                     <h2>Architecture du pipeline graphique :</h2>
 
                     <h3><i>Deferred Shading</i></h3>
-                    <p>La partie final de ce projet (lab_work 6 et 7) utilise la technique de <i>Deferred Shading</i>,
-                        qui consiste à effectuer le rendu en plusieurs <i>pass</i> de rendu et d'enregistrer ces
+                    <p>La partie finale de ce projet (lab_work 6 et 7) utilise la technique de <i>Deferred Shading</i>,
+                        qui consiste à effectuer le rendu en plusieurs passes de rendu et d'enregistrer ces
                         différentes parties dans un FBO (Frame Buffer Object). Un rendu par <i>Deferred Shading</i>
                         comporte au moins 2 étapes, la <i>Geometry pass</i>, qui fait le rendu de la scène en prenant en
                         compte la profondeur et la <i>Shading Pass</i> qui s'occupe de prendre en compte la lumière,
-                        ici, à l'aide du model de Blinn-Phong.</p>
+                        ici, à l'aide du modèle de Blinn-Phong.</p>
+
+                    <h3>Gamma</h3>
+                    <p>En plus des deux passes vues plus tôt, une passe de correction gamma est aussi appliquée. Elle
+                        permet de modifier la luminosité du rendu obtenu.</p>
 
                     <h3>...</h3>
                     <p>...</p>
@@ -59,14 +62,15 @@
                     <h2>Occlusion ambiante (SSAO) :</h2>
 
                     <h3>Principe</h3>
-                    <p>Simuler les ombres de contect et l'atténuation de la lumèire indirecte dans les espaces refermé
+                    <p>Simuler les ombres de contact et l'atténuation de la lumière indirecte dans les espaces refermé
                         comme les coins du décor.</p>
 
                     <h3>Fonctionnement</h3>
                     <p>La méthode permettant de calculer l'occlusion ambiante consiste, a généré un certain nombre de
-                        point (ici 64) dans une demi-sphére pour vérifier si le point central de la sphère est entouré
-                        d'un ou plusieurs obstacles et ainsi ajouter une ombre correspondant à l'occlusion ainsi trouvé.
-                        Pour amèliorer le résultat, un effet de flou est ajouté en plus d'une rotation aléatoire du
+                        point (ici 64) dans une demi-sphère pour vérifier si le point central de la sphère est entouré
+                        d'un ou plusieurs obstacles et ainsi ajouter une ombre correspondant à l'occlusion ainsi
+                        trouvée.
+                        Pour améliorer le résultat, un effet de flou est ajouté en plus d'une rotation aléatoire du
                         noyau généré.</p>
 
                     <h2>Matériaux, textures et géométrie :</h2>
@@ -76,18 +80,27 @@
 
                     <h3><i>Normal Mapping</i></h3>
                     <p>Utilisation des normales pour perturber le relief et ainsi rajouter du détail quand la lumière
-                        est appliquer aux textures.</p>
+                        est appliquée aux textures.</p>
 
                     <h3>Test d'opacité</h3>
-                    <p>Si la valeur alpha un inférieur a 0.5, la couleur est ingnoré (utilisé pour les feuillages et
-                        certain de la scéne <i>sponza</i>).</p>
+                    <p>Si la valeur alpha est inférieur a 0.5, le fragment est ignoré (utilisé pour les feuillages et
+                        certains éléments de la scéne <i>sponza</i>).</p>
 
                     <h3>Importation de scénes lourdes</h3>
                     <p>Pour limiter l'utilisation de mémoire VRAM, au chargement de chaques textures, une vérification
                         est appliqué pour éviter de charger plusieurs fois la même texture.</p>
 
-                    <h2></h2>
+                    <h2>Interface et interactions :</h2>
 
+                    <h3>Déplacements</h3>
+                    <p>Il est possible de se déplacer à l'aide des touches ZQSD, le déplacement est fluide grâce a
+                        l'utilisation d'un système de booléen. Il est possible de changer l'orientation de la caméra à
+                        la souris.</p>
+
+                    <h3>Menu</h3>
+                    <p>Un menu ImGui permet d'ajuster en temps réel les paramètres de la scène pendant le rendu, il
+                        permet par exemple de régler la correction gamma ou les différents paramétres relatifs au SSAO.
+                        Chaque lab_work posséde un menu différent en fonction du rendu effectué.</p>
                 </div>
             </div>
         </div>
