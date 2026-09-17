@@ -66,6 +66,12 @@ html {
     margin: 0 auto;
 }
 
+.img-small {
+    max-width: 30%;
+    height: auto;
+    display: block;
+}
+
 .center {
     display: flex;
     flex-direction: column;
