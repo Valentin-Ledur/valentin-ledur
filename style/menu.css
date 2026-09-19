@@ -151,3 +151,9 @@ input[type="file"]::file-selector-button:hover {
         display: flex;
     }
 }
+
+@media print {
+    .grid-menu{
+        display: none;
+    }
+}
