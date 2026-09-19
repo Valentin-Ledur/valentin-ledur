@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr" class="background text-white">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/menu.css">
+    <link rel="stylesheet" href="style/color.css">
+</head>
+
+<body>
+    <div class="grid-container">
+        <!-- Menu -->
+        <div id="menu-container" class="grid-menu menu-background">
+            <div id="pages"></div>
+        </div>
+        <!-- Affichage du menu selectionné -->
+
+        <div class="grid-body center">
+            <div class="text-block text-center">
+                <h1>Vision par Ordinateur & Deep Learning</h1>
+                <p class="cv-motivation">
+                    Étude et implémentation de modèles génératifs et d'architectures d'apprentissage profond sous
+                    TensorFlow / Keras.
+                </p>
+
+                <div class="text-left">
+                    <h2>Réseaux Génératifs Antagonistes (GAN) :</h2>
+                    <h3>Approximation de distributions statistiques</h3>
+                    <p>Conception d'un premier GAN apprenant à projeter un bruit aléatoire gaussien vers une
+                        distribution de Laplace continue via un entraînement antagoniste.</p>
+
+                    <div><img class="img" src="img/distribution.webp" alt="distribution">
+                        <p>Distribution de Laplace en rouge et résultat GAN en bleu.</p>
+                        <p>D représente le nombre de vrai positif sur le nombre de résultat renvoyé par le
+                            discriminateur, l'objectif étant d'arriver à 0.5, le moment où le discriminateur n'arrive
+                            plus à différencier les résultats de générateur et ici la distribution de Laplace.</p>
+                    </div>
+
+                    <h3>Génération de visages & Exploration de l'espace latent</h3>
+                    <p>Génération de portraits synthétiques sur le jeu de données CelebA. Validation de la régularité de
+                        l'espace latent par interpolation vectorielle entre différents profils générés.</p>
+                    <img class="img" src="img/suite_gan.webp" alt="espace_z_distribution">
+
+                    <h2>Auto-encodeurs & Super-Résolution d'Images :</h2>
+                    <h3>Architecture Encodeur / Décodeur convolutif</h3>
+                    <p>Reconstruction de détails haute fréquence à partir d'entrées basse résolution (32x32 vers
+                        128x128). L'encodeur compresse les motifs visuels en un espace compact, tandis que le décodeur
+                        reconstruit le signal à l'aide de convolutions transposées.</p>
+
+                    <h3>Benchmark comparatif</h3>
+                    <p>Comparaison des performances de reconstruction face aux algorithmes d'interpolation traditionnels
+                        :</p>
+                    <img class="img" src="img/upscaling_with_known_faces.webp" alt="upscaling_with_known_faces">
+                    <p>La première ligne correspond à l'image donnée en entrée , la deuxième ligne correspond au filtre
+                        du
+                        plus proche voisin, la troisième au filtre bicubique, la quatrième à l'image originale et la
+                        dernière aux résultats obtenus.</p>
+
+                    <h2>Méthode utilisée :</h2>
+
+                    <h3>Condition d'arrêt</h3>
+                    <p>Chaque programme s'arrête après un nombre de valeurs consécutives de D sans amélioration réelle.
+                    </p>
+
+                    <h3>Entraînement</h3>
+                    <p>Des morceaux aléatoires sont prélevés dans l'image de base pour ensuite entraîner le réseau sur
+                        des parties spécifiques d'un visage (yeux, menton, etc...). </p>
+
+                    <p>Résultat sur une image complète sur laquelle le réseau ne s'est pas entraîné :</p>
+                    <div class="img text-center">
+                        <img src="img/upscaling_1.webp" alt="upscaling_1">
+                        <img src="img/upscaling_2.webp" alt="upscaling_2">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Recuperation du menu -->
+    <script>
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("pages").innerHTML = data;
+
+                const btn = document.getElementById('menu-toggle');
+                const list = document.getElementById('menu-links');
+
+                if (btn && list) {
+                    btn.addEventListener('click', () => {
+                        list.classList.toggle('active');
+                    });
+                }
+            });
+    </script>
+</body>
+
+</html>
