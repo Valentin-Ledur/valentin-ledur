@@ -256,8 +256,6 @@
 
     .cv-img {
         border: 3px solid black !important;
-        width: 90px !important;
-        height: 90px !important;
         margin-bottom: 0px !important;
         background-color: transparent !important;
     }
@@ -272,6 +270,10 @@
 
     .cv-left-block {
         margin-bottom: 0px !important;
+    }
+
+    .cv-left-block h2 {
+        margin-bottom: 10px !important;
     }
 
     .timeline-item {
