@@ -252,6 +252,8 @@
         background-color: transparent !important;
         border-left: 4px solid black !important;
         color: black !important;
+        padding: 0px !important;
+        padding-left: 2px !important;
     }
 
     .cv-img {
@@ -281,8 +283,9 @@
     }
 
     .cv-right-block h2 {
-        margin-bottom: 10px !important;
-        padding-bottom: 2px !important;
+        margin-top: 5px !important;
+        margin-bottom: 5px !important;
+        padding-bottom: 0px !important;
     }
 
     html {
