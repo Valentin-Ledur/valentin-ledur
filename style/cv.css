@@ -22,7 +22,7 @@
 .cv-img {
     width: 120px;
     height: 150px;
-    border-radius: 50%;
+    /*border-radius: 50%;*/
     object-fit: cover;
     border: 3px solid #38bdf8;
     margin-bottom: 30px;
