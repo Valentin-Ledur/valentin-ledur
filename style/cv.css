@@ -111,6 +111,12 @@
     margin-top: 20px;
 }
 
+.item-icon {
+    width: 10px;
+    height: auto;
+    padding-right: 3px;
+}
+
 .timeline-item {
     position: relative;
     margin-bottom: 30px;
