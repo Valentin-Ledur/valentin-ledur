@@ -1,10 +1,10 @@
 import * as THREE from 'three';
 
 export class Hair {
-    constructor() {
+    constructor(p0) {
         this.elements = [];
 
-        this.p0 = new THREE.Vector3(0, 0, 0);
+        this.p0 = p0;
 
         this.F0 = {
             t0: new THREE.Vector3(0, 1, 0),

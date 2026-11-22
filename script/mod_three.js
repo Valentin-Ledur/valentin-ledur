@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-import { Hair } from './hair/hair.js'
+import { Haircut } from './hair/haircut.js'
 
 const canvas = document.getElementById('canvas-container');
 
@@ -32,15 +32,20 @@ controls.update();
 
 /* -------------------------- test cheveux -------------------------- */
 
-const myHair = new Hair();
+/*
+const myHair = new Hair(new THREE.Vector3(0, 0, 0));
 
 for (let i = 0; i < 50; i++) {
-    myHair.addElement(0.1, 3, 4, 0); 
+    myHair.addElement(0.1, 3, 4, 0);
 }
 
 const hair3DObject = myHair.makeHair();
-
 scene.add(hair3DObject);
+*/
+
+const h = new Haircut(10);
+
+h.addHaircut(scene);
 
 window.addEventListener('resize', () => {
     camera.aspect = canvas.clientWidth / canvas.clientHeight;
